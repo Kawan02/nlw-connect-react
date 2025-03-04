@@ -1,14 +1,15 @@
 import { defineConfig } from 'orval'
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL
 export default defineConfig({
   api: {
-    input: 'http://localhost:3333/docs/json',
+    input: `${apiUrl}/docs/json`,
     output: {
       target: './src/http/api.ts',
       client: 'fetch',
       httpClient: 'fetch',
       clean: true,
-      baseUrl: 'http://localhost:3333',
+      baseUrl: apiUrl,
       override: {
         fetch: {
           includeHttpResponseReturnType: false,
